@@ -35,6 +35,7 @@ if __name__ == "__main__":
         camera.resolution = (1920, 1080)
         camera.framerate = 30
         frame = int(time.time())
+        camera.annotate_text_size = 120
         camera.annotate_background = Color('black')
         camera.annotate_text = load_fx_mode(0)
         camera.start_preview()
