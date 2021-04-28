@@ -22,11 +22,10 @@ def initializeGPIOs():
 
 
 def load_fx_mode(n):
-   global current_cam_fx_index
-   current_cam_fx_index = (current_cam_fx_index + n) % len(FX_LIST)
-   fx = FX_LIST[current_cam_fx_index]
-   print(fx)
-   return fx
+    global current_cam_fx_index
+    current_cam_fx_index = (current_cam_fx_index + n) % len(FX_LIST)
+    fx = FX_LIST[current_cam_fx_index]
+    return fx
 
 
 if __name__ == "__main__":
