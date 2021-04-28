@@ -46,11 +46,11 @@ if __name__ == "__main__":
             if setting_next_btn_state == False:
                 fx = load_fx_mode(1)
                 camera.image_effect = fx
-                camera.annotate_text = fx
+                camera.annotate_text = ' ' + fx + ' '
             elif setting_prev_btn_state == False:
                 fx = load_fx_mode(-1)
                 camera.image_effect = fx
-                camera.annotate_text = fx
+                camera.annotate_text = ' ' + fx + ' '
             elif shutter_btn_state == False:
                 camera.capture('/home/pi/Pictures/%03d.jpg' % frame)
                 frame += 1
