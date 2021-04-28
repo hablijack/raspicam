@@ -22,7 +22,11 @@ def initializeGPIOs():
 
 
 def load_fx_mode(n):
-    (current_cam_fx_index + n) % len(FX_LIST)
+   global current_cam_fx_index
+   current_cam_fx_index = (current_cam_fx_index + n) % len(FX_LIST)
+   fx = FX_LIST[current_cam_fx_index]
+   print(fx)
+   return fx
 
 
 if __name__ == "__main__":
@@ -38,10 +42,9 @@ if __name__ == "__main__":
             setting_next_btn_state = GPIO.input(SETTING_NEXT_BTN_GPIO)
             setting_prev_btn_state = GPIO.input(SETTING_PREV_BTN_GPIO)
             if setting_next_btn_state == False:
-                current_cam_fx_index
-                camera.image_effect = FX_LIST[load_fx_mode(1)]
+                camera.image_effect = load_fx_mode(1)
             elif setting_prev_btn_state == False:
-                camera.image_effect = FX_LIST[load_fx_mode(-1)]
+                camera.image_effect = load_fx_mode(-1)
             elif shutter_btn_state == False:
                 camera.capture('/home/pi/Pictures/%03d.jpg' % frame)
                 frame += 1
