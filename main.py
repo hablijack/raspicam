@@ -36,8 +36,9 @@ if __name__ == "__main__":
         camera.framerate = 30
         frame = int(time.time())
         camera.annotate_text_size = 120
-        camera.annotate_background = Color('black')
-        camera.annotate_text = load_fx_mode(0)
+        camera.annotate_foreground = Color('black')
+        camera.annotate_background = Color('white')
+        camera.annotate_text = ' ' + load_fx_mode(0) + ' '
         camera.start_preview()
         while True:
             shutter_btn_state = GPIO.input(SHUTTER_BTN_GPIO)
@@ -52,6 +53,8 @@ if __name__ == "__main__":
                 camera.image_effect = fx
                 camera.annotate_text = ' ' + fx + ' '
             elif shutter_btn_state == False:
+                camera.annotate_text = None
                 camera.capture('/home/pi/Pictures/%03d.jpg' % frame)
                 frame += 1
+                camera.annotate_text = ' ' + load_fx_mode(0) + ' '
             time.sleep(0.2)
