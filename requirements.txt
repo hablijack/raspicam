@@ -1,1 +1,2 @@
 picamera
+python-telegram-bot
